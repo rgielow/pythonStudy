@@ -35,17 +35,6 @@ def verificaSenha(usuario, hash):
             else:
                 print("Usuário/senha inválidos")
 
-def verificaSenhaDireto(usuario, hash):
-    for item in usuarios:
-        if usuario == item.get('username'):
-            if hash == item.get('password'):
-                print("{} logado!".format(item.get('name')))
-                break
-            else:
-                print("Usuário/senha inválidos")
-                break
-
-
 def verificaSeExisteUser(usuario, senhaEmHash):
     user = 0
     for item in usuarios:
@@ -63,4 +52,4 @@ senhaEmBytes = bytes(senha, 'utf-8')
 hash = hash.sha256()
 hash.update(senhaEmBytes)
 senhaEmHash = hash.hexdigest()
-verificaSenhaDireto(usuario, senhaEmHash)
+verificaSeExisteUser(usuario, senhaEmHash)
