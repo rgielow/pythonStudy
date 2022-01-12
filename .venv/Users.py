@@ -1,42 +1,34 @@
 import hashlib as hash
 import json
 
-# Criando uma lista vazia chamada “usuários”
 usuarios = []
 
-# Criando um usuário como dicionário com name, username e password
 usuario = {
     "name": "Clark Kent",
     "username": "kent",
     "password": "6c70795dc50a2d6765a44bceda2699c48a8e81effe3f9e7cf3b6f8bb34ccb5b2"
 }
-# Inclui este usuário na lista usuários
+
 usuarios.append(usuario)
 
-# Criando um usuário como dicionário com name, username e password
 usuario = {
     "name": "Bruce Wayne",
     "username": "wayne",
     "password": "0bf3116d14ceeb7b8859abb9f5b90a7747913185930fed774a949cc8777a990a"
 }
-# Inclui este usuário na lista usuários
+
 usuarios.append(usuario)
 
-# Criando um usuário como dicionário com name, username e password
 usuario = {
     "name": "Christopher Walker",
     "username": "walker",
     "password": "db7e65b576f6b3db9041cbddff92f9a4b7253b795aab817d3f348977b014cd83"
 }
 
-# Inclui este usuário na lista usuários
 usuarios.append(usuario)
 
-# Função para verificar se a senha digitada está correta
-
-
 def verificaSenha(usuario, hash):
-    for item in usuarios: 
+    for item in usuarios:
         if usuario == item.get('username'):
             if hash == item.get('password'):
                 print("{} logado!".format(item.get('name')))
@@ -53,7 +45,6 @@ def verificaSeExisteUser(usuario, senhaEmHash):
     else:
         verificaSenha(usuario, senhaEmHash)
 
-
 usuario = input("Digite seu usuário: ")
 senha = input("Digite sua senha: ")
 senhaEmBytes = bytes(senha, 'utf-8')
@@ -61,5 +52,4 @@ senhaEmBytes = bytes(senha, 'utf-8')
 hash = hash.sha256()
 hash.update(senhaEmBytes)
 senhaEmHash = hash.hexdigest()
-#print("hash da senha inputada {}".format(senhaEmHash))
 verificaSeExisteUser(usuario, senhaEmHash)
